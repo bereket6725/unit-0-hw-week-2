@@ -27,8 +27,8 @@
     NSString *_city;
 }
 
-- (void)setName:(NSString *)name {
-    _name = name;
+- (void)setName:(NSString *)newName {
+    _name = newName;
 }
 
 - (NSString *)name {
@@ -51,13 +51,46 @@
     return _phoneNumber;
 }
 
+- (void)setNameToThisPersonsName:(Person *)otherPerson {
+    
+    otherPerson
+    
+}
+
+- (BOOL)checkSameCity: (Person *)stranger{
+    
+    BOOL isSameCity = [stranger.city isEqualToString: _city];
+    
+    return isSameCity;
+}
+
+
+
+
 @end
 
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+
+        //create sarah & set properties!!
+        Person *sarah = [[Person alloc] init];
+        [sarah setCity:@"Sao Paolo"];
+        [sarah setName:@"Sarah"];
+        
+    
+        //create Bereket & set properties!!
+        Person *Bereket= [[Person alloc] init];
+        [Bereket setCity:@"New York"];
+        [Bereket setName:@"Bereket"];
+        
+        //call methods to check if we from the same hood
+        BOOL comparableNotReally = [Bereket checkSameCity:sarah];
+    
+        NSLog(@"%hhd",comparableNotReally);
+        
+        [Bereket setNameToThisPersonsName:sarah];
+        
     }
     return 0;
 }
