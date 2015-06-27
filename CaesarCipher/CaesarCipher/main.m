@@ -53,8 +53,14 @@
 @end
 
 
+
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        char input;
+        scanf("%c", input);
+        
+        
         
     }
 }

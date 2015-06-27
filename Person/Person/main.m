@@ -53,8 +53,15 @@
 
 - (void)setNameToThisPersonsName:(Person *)otherPerson {
     
-    otherPerson
+    otherPerson.name =_name;
     
+}
+
+
+
+- (NSString *)returnName: (Person *)otherPerson{
+    
+    return  otherPerson.name;
 }
 
 - (BOOL)checkSameCity: (Person *)stranger{
@@ -82,14 +89,19 @@ int main(int argc, const char * argv[]) {
         //create Bereket & set properties!!
         Person *Bereket= [[Person alloc] init];
         [Bereket setCity:@"New York"];
-        [Bereket setName:@"Bereket"];
+        [Bereket setName:@"Potatoe Salad"];
         
         //call methods to check if we from the same hood
         BOOL comparableNotReally = [Bereket checkSameCity:sarah];
+        
     
         NSLog(@"%hhd",comparableNotReally);
         
         [Bereket setNameToThisPersonsName:sarah];
+        
+        NSString *returnedName = [sarah returnName:sarah];
+        
+        NSLog(@"%@", [sarah name]);
         
     }
     return 0;
