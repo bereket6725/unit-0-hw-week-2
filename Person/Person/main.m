@@ -19,12 +19,18 @@
 - (void)setPhoneNumber:(NSString *)phoneNumber;
 - (NSString *)phoneNumber;
 
+-(void)registerAChild;
+
+
+
+
 @end
 
 @implementation Person {
     NSString *_name;
     NSString *_phoneNumber;
     NSString *_city;
+    NSMutableArray* _children;
 }
 
 - (void)setName:(NSString *)newName {
@@ -57,6 +63,14 @@
     
 }
 
+-(Person*)registerChild{
+    
+    Person* abc = [[Person alloc] init];
+    [abc setCity:[self city]];
+    [abc setPhoneNumber:[self phoneNumber]];
+    
+    return abc;
+}
 
 
 - (NSString *)returnName: (Person *)otherPerson{
@@ -89,19 +103,33 @@ int main(int argc, const char * argv[]) {
         //create Bereket & set properties!!
         Person *Bereket= [[Person alloc] init];
         [Bereket setCity:@"New York"];
-        [Bereket setName:@"Potatoe Salad"];
+        [Bereket setName:@"BearCat"];
+        
+        
+        
+        NSLog(@"%@", [Bereket name]);
+        NSLog(@"%@", [sarah name]);
+        
+        
+       Person *BereketsKid = [Bereket registerChild];
+        
+        if (BereketsKid.city == Bereket.city & BereketsKid.phoneNumber == Bereket.phoneNumber) {
+            NSLog(@"Bearcats a Baby Daddy too");
+        }
+        
+        [BereketsKid setName:@"rowen"];
         
         //call methods to check if we from the same hood
         BOOL comparableNotReally = [Bereket checkSameCity:sarah];
         
-    
-        NSLog(@"%hhd",comparableNotReally);
-        
-        [Bereket setNameToThisPersonsName:sarah];
-        
-        NSString *returnedName = [sarah returnName:sarah];
-        
-        NSLog(@"%@", [sarah name]);
+        if(comparableNotReally == YES){
+            NSLog(@"LIVE IN THE SAME CITY!");
+        }
+        else{
+             NSLog(@"DONT LIVE IN THE SAME CITY! D:");
+        }
+
+       
         
     }
     return 0;
